@@ -13,9 +13,9 @@ function App() {
     );
   };
 
-  const updateIsStarted = (index) => {
+  const updateIsStarted = (index, value) => {
     setIsStarted((prevStates) =>
-      prevStates.map((state, i) => (i === index ? true : state))
+      prevStates.map((state, i) => (i === index ? value : state))
     );
   };
 
@@ -43,7 +43,7 @@ function App() {
         <Counter
           incr={1}
           isStarted={isStarted[0]}
-          setIsStarted={() => updateIsStarted(0)}
+          setIsStarted={(value) => updateIsStarted(0, value)}
           counter={counters[0]}
           setCounter={(value) => updateCounter(0, value)}
         />
@@ -57,7 +57,7 @@ function App() {
         <Counter
           incr={2}
           isStarted={isStarted[1]}
-          setIsStarted={() => updateIsStarted(1)}
+          setIsStarted={(value) => updateIsStarted(1, value)}
           counter={counters[1]}
           setCounter={(value) => updateCounter(1, value)}
         />
@@ -71,7 +71,7 @@ function App() {
         <Counter
           incr={1}
           isStarted={isStarted[2]}
-          setIsStarted={() => updateIsStarted(2)}
+          setIsStarted={(value) => updateIsStarted(2, value)}
           counter={counters[2]}
           setCounter={(value) => updateCounter(2, value)}
           cyclic={true}
@@ -86,7 +86,7 @@ function App() {
         <BinaryCounter
           incr={1}
           isStarted={isStarted[3]}
-          setIsStarted={() => updateIsStarted(3)}
+          setIsStarted={(value) => updateIsStarted(3, value)}
           counter={counters[3]}
           setCounter={(value) => updateCounter(3, value)}
         />
