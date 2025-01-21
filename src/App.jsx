@@ -8,11 +8,15 @@ function App() {
   const [counters, setCounters] = useState([0, 0, 0, 0]);
 
   const updateCounter = (index, value) => {
-    setCounters((prev) => prev.map((c, i) => (i === index ? value : c)));
+    setCounters((prevCounters) =>
+      prevCounters.map((counter, i) => (i === index ? value : counter))
+    );
   };
 
-  const updateIsStarted = (index, value) => {
-    setIsStarted((prev) => prev.map((s, i) => (i === index ? value : s)));
+  const updateIsStarted = (index) => {
+    setIsStarted((prevStates) =>
+      prevStates.map((state, i) => (i === index ? true : state))
+    );
   };
 
   const handleStart = () => {
@@ -25,7 +29,9 @@ function App() {
   };
 
   const handleStop = (index) => {
-    setIsStarted((prev) => prev.map((val, i) => (i === index ? false : val)));
+    setIsStarted((prevStates) =>
+      prevStates.map((state, i) => (i === index ? false : state))
+    );
   };
 
   return (
@@ -37,7 +43,7 @@ function App() {
         <Counter
           incr={1}
           isStarted={isStarted[0]}
-          setIsStarted={(value) => updateIsStarted(0, value)}
+          setIsStarted={() => updateIsStarted(0)}
           counter={counters[0]}
           setCounter={(value) => updateCounter(0, value)}
         />
@@ -51,7 +57,7 @@ function App() {
         <Counter
           incr={2}
           isStarted={isStarted[1]}
-          setIsStarted={(value) => updateIsStarted(1, value)}
+          setIsStarted={() => updateIsStarted(1)}
           counter={counters[1]}
           setCounter={(value) => updateCounter(1, value)}
         />
@@ -65,7 +71,7 @@ function App() {
         <Counter
           incr={1}
           isStarted={isStarted[2]}
-          setIsStarted={(value) => updateIsStarted(2, value)}
+          setIsStarted={() => updateIsStarted(2)}
           counter={counters[2]}
           setCounter={(value) => updateCounter(2, value)}
           cyclic={true}
@@ -80,7 +86,7 @@ function App() {
         <BinaryCounter
           incr={1}
           isStarted={isStarted[3]}
-          setIsStarted={(value) => updateIsStarted(3, value)}
+          setIsStarted={() => updateIsStarted(3)}
           counter={counters[3]}
           setCounter={(value) => updateCounter(3, value)}
         />
